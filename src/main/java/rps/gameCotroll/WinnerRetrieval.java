@@ -3,7 +3,7 @@ package rps.gameCotroll;
 import rps.gameCotroll.dto.ResultDto;
 import rps.symbols.SymbolFactory;
 
-public class GameAlgorithm {
+public class WinnerRetrieval {
 
     SymbolFactory symbolFactory = new SymbolFactory();
     private final static String SCISSORS = "SCISSORS";
@@ -15,10 +15,10 @@ public class GameAlgorithm {
     private final static String LIZARD = "LIZARD";
     private final static String SPOCK = "SPOCK";
 
-    public ResultDto startFight(int user, int comp) {
+    public ResultDto returnWinner(int user, int comp) {
         String userSymbol = symbolFactory.makeSymbol(user).getSymbol();
         String compSymbol = symbolFactory.makeSymbol(comp).getSymbol();
-        String winInfo = null;
+        String winInfo;
         if (userSymbol.equals(SCISSORS)&&compSymbol.equals(PAPER)) {
             winInfo = USER;
         } else if (userSymbol.equals(PAPER)&&compSymbol.equals(ROCK)) {

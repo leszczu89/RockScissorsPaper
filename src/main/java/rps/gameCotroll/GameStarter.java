@@ -7,7 +7,7 @@ public class GameStarter {
     private int winNumber;
     private int gameVersion;
 
-    public void startGame (String userName) {
+    public void retrieveInfoToStartGame(String userName) {
         System.out.println("Hello " + userName);
         System.out.println("How many times does the player have to win to end the game?");
         Scanner scanner = new Scanner(System.in);

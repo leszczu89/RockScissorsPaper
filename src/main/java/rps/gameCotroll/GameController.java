@@ -27,8 +27,10 @@ public class GameController {
             InputDto inputDto = inputVerifier.verifyInput(scanner, gameVersion);
             if (inputDto.isEscapeExit()){
                 continue;
-            }
-            if (!inputDto.isGameContinue()){
+            } else if (inputDto.isNewGameRequest()) {
+                GameStarter gameStarter = new GameStarter();
+                gameStarter.retrieveInfoToStartGame(userName);
+            } else if (!inputDto.isGameContinue()){
                 break;
             } else if (inputDto.isGameContinue()) {
                 int user = inputDto.getNumber();
@@ -40,14 +42,11 @@ public class GameController {
                 } else {
                     comp = random.nextInt(5)+1;
                 }
-                resultDto = new GameAlgorithm().startFight(user, comp);
+                resultDto = new WinnerRetrieval().returnWinner(user, comp);
                 ResultDisplay resultDisplay = new ResultDisplay();
                 CounterDto counterDto = resultDisplay.displayResult(resultDto, userCounter, computerCounter);
                 userCounter = counterDto.getUserCounter();
                 computerCounter = counterDto.getCompCounter();
-            } else if (inputDto.isNewGameRequest()) {
-                GameStarter gameStarter = new GameStarter();
-                gameStarter.startGame(userName);
             }
             scanner.nextLine();
         }

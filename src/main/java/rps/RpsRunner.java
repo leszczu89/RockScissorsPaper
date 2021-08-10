@@ -14,7 +14,7 @@ public class RpsRunner {
         Scanner scanner = new Scanner(System.in);
         userName = scanner.nextLine();
         GameStarter gameStarter = new GameStarter();
-        gameStarter.startGame(userName);
+        gameStarter.retrieveInfoToStartGame(userName);
 
     }
 }
