@@ -1,0 +1,8 @@
+Enter:
+1 - for ROCK
+2 - for PAPER
+3 - for SCISSORS
+4 - for SPOCK
+5 - for LIZARD
+x - to end the game
+n - to start a new game
