@@ -30,7 +30,7 @@ public class InputVerifier {
                 System.out.println("Are you sure you want to start a new game? Please enter:\n" +
                         "1 for Yes\n2 for no");
                 if (scanner.nextInt() == 1) {
-                    gameContinue = false;
+                    gameContinue = true;
                     newGameRequest = true;
                 } else {
                     gameContinue = true;

@@ -20,7 +20,7 @@ public class GameController {
         }else {
             FileReader.readFile("instructions/rpssl.txt");
         }
-        while (userCounter!=winNumber||computerCounter!=winNumber) {
+        while (userCounter!=winNumber|computerCounter!=winNumber) {
             System.out.println("Enter the number");
             Scanner scanner = new Scanner(System.in);
             InputVerifier inputVerifier = new InputVerifier();
@@ -28,7 +28,9 @@ public class GameController {
             if (inputDto.isEscapeExit()){
                 continue;
             }
-            if (inputDto.isGameContinue()) {
+            if (!inputDto.isGameContinue()){
+                break;
+            } else if (inputDto.isGameContinue()) {
                 int user = inputDto.getNumber();
                 Random random = new Random();
                 ResultDto resultDto;
@@ -46,10 +48,8 @@ public class GameController {
             } else if (inputDto.isNewGameRequest()) {
                 GameStarter gameStarter = new GameStarter();
                 gameStarter.startGame(userName);
-            } else if (!inputDto.isGameContinue()) {
-                break;
             }
-
+            scanner.nextLine();
         }
         System.out.println("End of the game");
 
