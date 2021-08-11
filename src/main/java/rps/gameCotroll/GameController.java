@@ -16,17 +16,17 @@ public class GameController {
     public void startGame(int winNumber, int gameVersion, String userName) {
 
         if (gameVersion==1) {
-            FileReader.readFile("instructions/rps.txt");
+            InstructionDisplay.displayInstruction("instructions/rps.txt");
         }else {
-            FileReader.readFile("instructions/rpssl.txt");
+            InstructionDisplay.displayInstruction("instructions/rpssl.txt");
         }
-        while (userCounter!=winNumber|computerCounter!=winNumber) {
+        while (userCounter!=winNumber&&computerCounter!=winNumber) {
             System.out.println("Enter the number");
             Scanner scanner = new Scanner(System.in);
             InputVerifier inputVerifier = new InputVerifier();
             InputDto inputDto = inputVerifier.verifyInput(scanner, gameVersion);
             if (inputDto.isEscapeExit()){
-                continue;
+                System.out.println("Back to the game");
             } else if (inputDto.isNewGameRequest()) {
                 GameStarter gameStarter = new GameStarter();
                 gameStarter.retrieveInfoToStartGame(userName);
@@ -48,9 +48,14 @@ public class GameController {
                 userCounter = counterDto.getUserCounter();
                 computerCounter = counterDto.getCompCounter();
             }
-            scanner.nextLine();
         }
-        System.out.println("End of the game");
-
+        String winner = "There is no winner";
+        if(userCounter==winNumber){
+            winner = userName;
+        } else if (computerCounter==winNumber){
+            winner = "Computer";
+        }
+        System.out.println("End of the game. The winner is: "+ winner);
+        System.exit(0);
     }
 }

@@ -2,12 +2,12 @@ package rps.gameCotroll.dto;
 
 public class InputDto {
 
-    private int number;
-    private boolean gameContinue;
-    private boolean newGameRequest;
-    private boolean escapeExit;
+    private final int number;
+    private final boolean gameContinue;
+    private final boolean newGameRequest;
+    private final boolean escapeExit;
 
-    public InputDto(int number, boolean gameContinue, boolean newGameRequest, boolean escapeExit) {
+    public InputDto(final int number, final boolean gameContinue, final boolean newGameRequest, final boolean escapeExit) {
         this.number = number;
         this.gameContinue = gameContinue;
         this.newGameRequest = newGameRequest;

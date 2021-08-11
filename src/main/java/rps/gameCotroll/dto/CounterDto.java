@@ -2,10 +2,10 @@ package rps.gameCotroll.dto;
 
 public class CounterDto {
 
-    private int userCounter;
-    private int compCounter;
+    private final int userCounter;
+    private final int compCounter;
 
-    public CounterDto(int userCounter, int compCounter) {
+    public CounterDto(final int userCounter, final int compCounter) {
         this.userCounter = userCounter;
         this.compCounter = compCounter;
     }

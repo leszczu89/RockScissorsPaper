@@ -3,6 +3,8 @@ package rps.gameCotroll;
 import rps.gameCotroll.dto.ResultDto;
 import rps.symbols.SymbolFactory;
 
+import java.util.Objects;
+
 public class WinnerRetrieval {
 
     SymbolFactory symbolFactory = new SymbolFactory();
@@ -16,8 +18,8 @@ public class WinnerRetrieval {
     private final static String SPOCK = "SPOCK";
 
     public ResultDto returnWinner(int user, int comp) {
-        String userSymbol = symbolFactory.makeSymbol(user).getSymbol();
-        String compSymbol = symbolFactory.makeSymbol(comp).getSymbol();
+        String userSymbol = Objects.requireNonNull(symbolFactory.makeSymbol(user)).getSymbol();
+        String compSymbol = Objects.requireNonNull(symbolFactory.makeSymbol(comp)).getSymbol();
         String winInfo;
         if (userSymbol.equals(SCISSORS)&&compSymbol.equals(PAPER)) {
             winInfo = USER;
